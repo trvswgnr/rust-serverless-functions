@@ -6,15 +6,10 @@ async fn main() -> Result<(), Error> {
     run(handler).await
 }
 
-pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
+pub async fn handler(req: Request) -> Result<Response<Body>, Error> {
+    let path = req.uri().path();
     Ok(Response::builder()
         .status(StatusCode::OK)
         .header("Content-Type", "application/json")
-        .body(
-            json!({
-              "message": "你好，世界"
-            })
-            .to_string()
-            .into(),
-        )?)
+        .body(json!({ "path": path }).to_string().into())?)
 }
