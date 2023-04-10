@@ -17,5 +17,6 @@ vercel_runtime = { version = "0.2.1" }
 
 # Each handler has to be specified as [[bin]]
 [[bin]]
-name = "hello"
-path = "api/hello.rs"
+name = "slug"
+path = "api/[slug].rs"
+
